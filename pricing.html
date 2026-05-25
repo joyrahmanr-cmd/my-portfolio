@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataPro — Pricing</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.pricing-wrap {
+  max-width: 960px; margin: 0 auto;
+}
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; align-items: start;
+}
+.price-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  transition: all 0.3s; position: relative;
+}
+.price-card.featured {
+  border-color: var(--gold-border);
+  background: linear-gradient(160deg, #1a1208, #0f0d06);
+  transform: scale(1.03);
+  box-shadow: 0 0 60px rgba(201,151,58,0.15);
+}
+.price-card:not(.featured):hover { border-color: var(--border-md); transform: translateY(-4px); }
+.popular-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--bg);
+  font-size: 0.72rem; font-weight: 700;
+  font-family: 'DM Mono', monospace; letter-spacing: 0.1em;
+  padding: 0.3rem 1rem; border-radius: 99px;
+  white-space: nowrap;
+}
+.price-plan {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem;
+  font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 1rem; display: block;
+}
+.price-card.featured .price-plan { color: var(--gold-light); }
+.price-amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem; color: var(--white); line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.price-card.featured .price-amount { color: var(--gold-light); }
+.price-unit {
+  font-size: 0.8rem; color: var(--muted);
+  margin-bottom: 2rem; display: block;
+}
+.price-divider {
+  height: 1px; background: var(--border);
+  margin-bottom: 1.5rem;
+}
+.price-features {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 0.8rem; margin-bottom: 2rem;
+}
+.price-features li {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  font-size: 0.875rem; color: var(--text); opacity: 0.8;
+}
+.price-features li .check { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.price-features li .cross { color: var(--muted); font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+.price-features li.dim { opacity: 0.4; }
+.btn-price {
+  display: block; width: 100%; padding: 0.85rem;
+  border-radius: 10px; text-decoration: none;
+  font-weight: 700; font-size: 0.9rem; text-align: center;
+  transition: all 0.2s; font-family: 'Outfit', sans-serif;
+  cursor: pointer; border: 1.5px solid var(--border-md);
+  background: transparent; color: var(--text);
+}
+.btn-price:hover { border-color: var(--gold); color: var(--gold); }
+.price-card.featured .btn-price {
+  background: var(--gold); border-color: var(--gold);
+  color: var(--bg); border: none;
+}
+.price-card.featured .btn-price:hover { background: var(--gold-light); }
+
+/* ── FAQ ── */
+.faq-section {
+  max-width: 720px; margin: 5rem auto 0;
+  padding-top: 4rem; border-top: 1px solid var(--border);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border); overflow: hidden;
+}
+.faq-q {
+  width: 100%; background: none; border: none;
+  color: var(--white); font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem; font-weight: 500; text-align: left;
+  padding: 1.25rem 0; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-arrow { color: var(--muted); font-size: 1.1rem; transition: transform 0.3s; }
+.faq-a {
+  font-size: 0.875rem; color: var(--muted); line-height: 1.8;
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.25rem; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--gold); }
+
+/* ── GUARANTEE ── */
+.guarantee {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; margin-top: 3.5rem;
+  max-width: 900px; margin-left: auto; margin-right: auto;
+}
+.g-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  text-align: center; transition: border-color 0.25s;
+}
+.g-item:hover { border-color: var(--gold-border); }
+.g-icon { font-size: 1.75rem; display: block; margin-bottom: 0.6rem; }
+.g-title { font-weight: 600; font-size: 0.9rem; color: var(--white); margin-bottom: 0.4rem; }
+.g-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .guarantee { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">// DataPro</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="pricing.html" class="active">Pricing</a></li>
+    <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="inner">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <div class="section-tag" style="justify-content:center; display:flex">// Packages</div>
+      <h2 class="section-title" style="text-align:center">Simple, <em>Clear Pricing</em></h2>
+      <p class="section-sub" style="margin:0 auto; text-align:center">No hidden fees. No surprises. Choose the plan that fits your project size.</p>
+    </div>
+
+    <div class="pricing-wrap">
+      <div class="pricing-grid">
+        <!-- BASIC -->
+        <div class="price-card">
+          <span class="price-plan">Basic</span>
+          <div class="price-amount">$15</div>
+          <span class="price-unit">per hour · small tasks</span>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Up to 500 records</li>
+            <li><span class="check">✓</span> Excel / Google Sheets</li>
+            <li><span class="check">✓</span> Copy typing up to 20 pages</li>
+            <li><span class="check">✓</span> 3-day delivery</li>
+            <li><span class="check">✓</span> 1 revision round</li>
+            <li class="dim"><span class="cross">✗</span> Data cleaning</li>
+            <li class="dim"><span class="cross">✗</span> CRM entry</li>
+          </ul>
+          <a href="contact.html" class="btn-price">Get Started</a>
+        </div>
+
+        <!-- STANDARD -->
+        <div class="price-card featured">
+          <div class="popular-badge">⭐ MOST POPULAR</div>
+          <span class="price-plan">Standard</span>
+          <div class="price-amount">$35</div>
+          <span class="price-unit">per project</span>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Up to 2,000 records</li>
+            <li><span class="check">✓</span> Excel, Sheets, Word</li>
+            <li><span class="check">✓</span> Data cleaning included</li>
+            <li><span class="check">✓</span> CRM / Database entry</li>
+            <li><span class="check">✓</span> 48-hour delivery</li>
+            <li><span class="check">✓</span> 3 revision rounds</li>
+            <li><span class="check">✓</span> Progress updates</li>
+          </ul>
+          <a href="contact.html" class="btn-price">Choose Standard</a>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="price-card">
+          <span class="price-plan">Enterprise</span>
+          <div class="price-amount" style="font-size:2.2rem;">Custom</div>
+          <span class="price-unit">for large ongoing work</span>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Unlimited records</li>
+            <li><span class="check">✓</span> All service types</li>
+            <li><span class="check">✓</span> Rush delivery available</li>
+            <li><span class="check">✓</span> Dedicated support</li>
+            <li><span class="check">✓</span> NDA / Confidentiality</li>
+            <li><span class="check">✓</span> Unlimited revisions</li>
+            <li><span class="check">✓</span> Monthly retainer option</li>
+          </ul>
+          <a href="contact.html" class="btn-price">Contact for Quote</a>
+        </div>
+      </div>
+
+      <!-- GUARANTEES -->
+      <div class="guarantee">
+        <div class="g-item">
+          <span class="g-icon">🔒</span>
+          <div class="g-title">100% Confidential</div>
+          <div class="g-desc">Your data is handled securely. NDA available on request for all projects.</div>
+        </div>
+        <div class="g-item">
+          <span class="g-icon">✅</span>
+          <div class="g-title">Accuracy Guarantee</div>
+          <div class="g-desc">I re-check all work before delivery. Free corrections if any errors are found.</div>
+        </div>
+        <div class="g-item">
+          <span class="g-icon">⚡</span>
+          <div class="g-title">On-Time Delivery</div>
+          <div class="g-desc">Deadlines are promises. If I miss the deadline, you get a partial refund.</div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <div style="text-align:center; margin-bottom:2.5rem;">
+          <div class="section-tag" style="justify-content:center; display:flex">// FAQ</div>
+          <h3 class="section-title" style="font-size:clamp(1.5rem,2.5vw,2rem); text-align:center">Common Questions</h3>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">How do I send my files to you? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">You can send files via email, Google Drive, Dropbox, or any file-sharing link. Just use the contact form to get started and I will give you all the details.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">What formats do you deliver work in? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">I deliver in any format you need — Excel (.xlsx), Google Sheets, Word (.docx), CSV, PDF, or directly inside your CRM platform. Just let me know your preference.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">Do you offer rush delivery? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">Yes! Rush delivery (within 12–24 hours) is available for an additional fee depending on project size. Mention it when you contact me and I will confirm availability.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">Is my data kept private and secure? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">Absolutely. I treat all client data with full confidentiality. I never share or store your data beyond the project. I am also happy to sign an NDA if required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">How do I pay? <span class="faq-arrow">▾</span></button>
+          <div class="faq-a">Payments are processed securely through Fiverr, Upwork, or PayPal. You only pay after the project is agreed upon and I never ask for full payment upfront for large projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">// DataPro</a>
+  <div class="footer-copy">© 2025 · Professional Data Entry Services</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function toggle(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
