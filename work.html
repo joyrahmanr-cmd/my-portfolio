@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Work | Portfolio</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b0c10;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: #121212;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+        }
+
+        .card p {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .tools {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #66fcf1;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background: #45a29e;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #66fcf1;
+            color: black;
+        }
+
+        .why {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .why h2 {
+            margin-bottom: 20px;
+        }
+
+        .why ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .why li {
+            margin: 10px 0;
+            color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>My Work</h1>
+    <p class="subtitle">Here are some of my recent projects</p>
+
+    <div class="grid">
+
+        <!-- Project 1 -->
+        <div class="card">
+            <img src="images/project1.jpg" alt="">
+            <div class="card-content">
+                <h3>Contact List Database</h3>
+                <p>Clean and organized Excel contact database with name, email, and company.</p>
+                <div class="tools">Tools: Excel</div>
+                <a href="#" class="btn">View Project</a>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card">
+            <img src="images/project2.jpg" alt="">
+            <div class="card-content">
+                <h3>Lead Generation List</h3>
+                <p>High-quality targeted leads collected through web research.</p>
+                <div class="tools">Tools: Google Sheets</div>
+                <a href="#" class="btn">View Project</a>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card">
+            <img src="images/project3.jpg" alt="">
+            <div class="card-content">
+                <h3>Sales Report</h3>
+                <p>Monthly sales analysis with organized data and profit tracking.</p>
+                <div class="tools">Tools: Excel</div>
+                <a href="#" class="btn">View Project</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Why Choose Me -->
+    <div class="why">
+        <h2>Why Choose Me</h2>
+        <ul>
+            <li>✔ 100% Accuracy</li>
+            <li>✔ Fast Delivery</li>
+            <li>✔ Professional Formatting</li>
+            <li>✔ Client Satisfaction</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
