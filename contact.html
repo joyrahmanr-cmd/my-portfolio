@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataPro — Contact</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.5fr;
+  gap: 4rem; align-items: start;
+}
+/* LEFT SIDE */
+.contact-left { display: flex; flex-direction: column; gap: 2rem; }
+.contact-info-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.75rem;
+}
+.info-title {
+  font-size: 0.75rem; font-family: 'DM Mono', monospace;
+  color: var(--muted); text-transform: uppercase;
+  letter-spacing: 0.1em; margin-bottom: 1.25rem;
+}
+.info-item {
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border); color: var(--text);
+  font-size: 0.9rem;
+}
+.info-item:last-child { border-bottom: none; }
+.info-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--gold-dim); border: 1px solid var(--gold-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.info-label { font-size: 0.72rem; color: var(--muted); display: block; margin-bottom: 1px; }
+.info-value { font-size: 0.875rem; color: var(--white); font-weight: 500; }
+
+/* PLATFORM CARDS */
+.platform-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+}
+.platform-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 0.75rem;
+  text-align: center; text-decoration: none;
+  transition: all 0.25s; display: block;
+}
+.platform-card:hover { border-color: var(--gold-border); transform: translateY(-3px); }
+.platform-icon { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; }
+.platform-name { font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+.platform-card:hover .platform-name { color: var(--gold); }
+
+/* AVAILABILITY */
+.availability {
+  background: var(--bg-card); border: 1px solid var(--gold-border);
+  border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.avail-dot {
+  width: 10px; height: 10px; background: #22c55e;
+  border-radius: 50%; flex-shrink: 0;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 10px rgba(34,197,94,0.5);
+}
+.avail-text { font-size: 0.875rem; color: var(--text); line-height: 1.5; }
+.avail-text strong { color: #22c55e; }
+
+/* RIGHT SIDE - FORM */
+.form-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2.5rem;
+}
+.form-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; color: var(--white); margin-bottom: 0.4rem;
+}
+.form-subtitle { font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; }
+.form-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.char-count {
+  font-size: 0.72rem; color: var(--muted);
+  text-align: right; margin-top: 0.25rem;
+}
+.success-msg {
+  display: none; background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.3);
+  border-radius: var(--radius); padding: 1.25rem;
+  color: #22c55e; font-size: 0.9rem; text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .platform-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">// DataPro</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="contact.html" class="active nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="inner">
+    <div class="section-tag">// Let's Work Together</div>
+    <h2 class="section-title">Get In <em>Touch</em></h2>
+    <p class="section-sub">Have a project? I respond within 24 hours and will get your data handled fast and accurately.</p>
+
+    <div class="contact-grid">
+      <!-- LEFT -->
+      <div class="contact-left">
+        <div class="availability">
+          <div class="avail-dot"></div>
+          <div class="avail-text"><strong>Available for new projects</strong><br>Currently accepting work. Response within 24 hours.</div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="info-title">Contact Details</div>
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div>
+              <span class="info-label">Email</span>
+              <span class="info-value">yourname@email.com</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">⏰</div>
+            <div>
+              <span class="info-label">Response Time</span>
+              <span class="info-value">Within 24 hours</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🌍</div>
+            <div>
+              <span class="info-label">Working With</span>
+              <span class="info-value">Global Clients (USD / PayPal)</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">🔒</div>
+            <div>
+              <span class="info-label">Confidentiality</span>
+              <span class="info-value">NDA available on request</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-title" style="margin-bottom:0.85rem;">Find Me On</div>
+          <div class="platform-grid">
+            <a href="#" class="platform-card">
+              <span class="platform-icon">🟢</span>
+              <div class="platform-name">Fiverr</div>
+            </a>
+            <a href="#" class="platform-card">
+              <span class="platform-icon">🔵</span>
+              <div class="platform-name">Upwork</div>
+            </a>
+            <a href="#" class="platform-card">
+              <span class="platform-icon">💼</span>
+              <div class="platform-name">LinkedIn</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT - FORM -->
+      <div class="form-card">
+        <div class="form-title">Send a Message</div>
+        <div class="form-subtitle">Fill in your project details and I will send a quote within 24 hours.</div>
+
+        <div id="successMsg" class="success-msg">
+          ✅ Message sent! I will get back to you within 24 hours.
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name *</label>
+            <input type="text" id="name" class="form-input" placeholder="John Smith">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="email" class="form-input" placeholder="john@company.com">
+          </div>
+        </div>
+        <div class="form-row" style="margin-bottom:1rem;">
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Service Needed *</label>
+            <select id="service" class="form-input" style="cursor:pointer;">
+              <option value="" disabled selected>Select a service...</option>
+              <option>Excel / Spreadsheet Entry</option>
+              <option>Copy Typing & Transcription</option>
+              <option>Data Cleaning & Formatting</option>
+              <option>CRM & Database Entry</option>
+              <option>Web Research & Data Collection</option>
+              <option>Product / E-commerce Listing</option>
+              <option>Other / Not Sure</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label">Budget Range</label>
+            <select id="budget" class="form-input" style="cursor:pointer;">
+              <option value="" disabled selected>Select budget...</option>
+              <option>Under $20</option>
+              <option>$20 – $50</option>
+              <option>$50 – $150</option>
+              <option>$150 – $500</option>
+              <option>$500+</option>
+              <option>Let's discuss</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Project Details *</label>
+          <textarea id="details" class="form-input" maxlength="1000" oninput="updateCount(this)" placeholder="Describe your project — how many records, what file format, your deadline, and any special requirements..."></textarea>
+          <div class="char-count"><span id="charCount">0</span> / 1000</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Deadline (optional)</label>
+          <input type="date" id="deadline" class="form-input">
+        </div>
+        <button class="btn-submit" onclick="submitForm()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a class="footer-logo" href="index.html">// DataPro</a>
+  <div class="footer-copy">© 2025 · Professional Data Entry Services</div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="pricing.html">Pricing</a>
+  </div>
+</footer>
+
+<script>
+function updateCount(el) {
+  document.getElementById('charCount').textContent = el.value.length;
+}
+function submitForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const service = document.getElementById('service').value;
+  const details = document.getElementById('details').value.trim();
+  if (!name || !email || !service || !details) {
+    alert('Please fill in all required fields (Name, Email, Service, and Project Details).');
+    return;
+  }
+  const msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  ['name','email','service','budget','details','deadline'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+  document.getElementById('charCount').textContent = '0';
+  setTimeout(() => { msg.style.display = 'none'; }, 5000);
+}
+</script>
+</body>
+</html>
