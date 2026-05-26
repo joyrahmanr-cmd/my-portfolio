@@ -187,7 +187,7 @@
       </div>
 
       <!-- RIGHT - FORM -->
-      <div class="form-card">
+      <form action="https://formspree.io/f/mykvnarr" method="POST" class="form-card">
         <div class="form-title">Send a Message</div>
         <div class="form-subtitle">Fill in your project details and I will send a quote within 24 hours.</div>
 
@@ -198,11 +198,11 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Your Name *</label>
-            <input type="text" id="name" class="form-input" placeholder="John Smith">
+            <input type="text" id="name" name="name" class="form-input" placeholder="John Smith" required>
           </div>
           <div class="form-group">
             <label class="form-label">Email Address *</label>
-            <input type="email" id="email" class="form-input" placeholder="john@company.com">
+            <input type="email" id="email" name="email" class="form-input" placeholder="john@company.com" required>
           </div>
         </div>
         <div class="form-row" style="margin-bottom:1rem;">
