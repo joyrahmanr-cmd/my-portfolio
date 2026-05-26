@@ -60,11 +60,19 @@
   border-bottom: 1px solid var(--border);
 }
 .avatar {
-  width: 50px; height: 50px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), #8b5e1a);
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Mono', monospace; font-size: 1rem;
-  font-weight: 500; color: var(--bg); flex-shrink: 0;
+    width: 90px;        /* Change from 50px to 90px */
+    height: 90px;       /* Change from 50px to 90px */
+    border-radius: 50%; 
+    background: linear-gradient(135deg, var(--gold), #8b5e1a); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: 'DM Mono', monospace; 
+    font-size: 1rem; 
+    font-weight: 500; 
+    color: var(--bg); 
+    flex-shrink: 0; 
+    overflow: hidden;   /* Add this line too to keep the circle crop clean */
 }
 .card-name { font-weight: 600; font-size: 1rem; color: var(--white); }
 .card-title { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
